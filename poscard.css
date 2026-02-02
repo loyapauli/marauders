@@ -1,76 +1,85 @@
-body {
-  background-color: #fff;
+/* ====== POSTCARD (FORO SAFE) ====== */
+/* En tu HTML envuelve todo en <div class="rr-wrap"> ... </div> */
+
+.rr-wrap { 
+  display: flex;
+  justify-content: center;
 }
 
-p {
+.rr-wrap .card { 
+  position: relative;     /* NO absolute */
+  margin: 0 auto;
+}
+
+/* SOLO dentro de la postal */
+.rr-wrap p {
   font-family: 'Shadows Into Light', cursive;
   font-size: 20px;
   line-height: 36px;
-  color: #99999;
+  color: #999999;         /* arreglado */
+  margin: 0 0 10px 0;
 }
 
-/**position the card in the centre of the page**/
-.card {
-  position: absolute;
-  margin: auto;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-.outer {
+/* Tamaño postal */
+.rr-wrap .outer {
   height: 500px;
   width: 800px;
-  background-color: red;
-  box-shadow: 2px 2px 10px #999;
-  /**Stripey background**/
+  max-width: 95%;
+  box-shadow: 2px 2px 10px rgba(0,0,0,.25);
+
+  /* Stripey background */
   background: repeating-linear-gradient(
-  45deg,
-  #AD1111, /**red**/
-  #AD1111 10px, /**red**/
-  #F8F6E7 10px, /**cream/background**/
-  #F8F6E7 20px, /**cream/background**/
-  #38437D 20px, /**blue**/
-  #38437D 30px, /**blue**/
-  #F8F6E7 30px, /**cream/background**/
-  #F8F6E7 40px /**cream/background**/
-);
+    45deg,
+    #AD1111 0,
+    #AD1111 10px,
+    #F8F6E7 10px,
+    #F8F6E7 20px,
+    #38437D 20px,
+    #38437D 30px,
+    #F8F6E7 30px,
+    #F8F6E7 40px
+  );
+
+  padding: 14px;          /* crea el borde alrededor del inner */
+  box-sizing: border-box;
 }
 
-/** Main bit of the card **/
-.inner {
-  height: 93%;
-  width: 96%;
+/* Interior */
+.rr-wrap .inner {
+  height: 100%;
+  width: 100%;
   display: flex;
-  /** Background gradient **/
-  background: #F8F6E7; /* For browsers that do not support gradients */
-  background: -webkit-radial-gradient(red, yellow, green); /* Safari 5.1 to 6.0 */
-  background: -o-radial-gradient(red, yellow, green); /* For Opera 11.6 to 12.0 */
-  background: -moz-radial-gradient(red, yellow, green); /* For Firefox 3.6 to 15 */
-  background: radial-gradient(#F8F6E7, #F8F6E7, #E2D4B4); /* Standard syntax */
+  box-sizing: border-box;
+
+  /* beige suave */
+  background: radial-gradient(#F8F6E7, #F8F6E7, #E2D4B4);
 }
 
-.left,
-.right {
+/* Columnas */
+.rr-wrap .left,
+.rr-wrap .right {
   width: 50%;
+  box-sizing: border-box;
 }
 
-.message {
+/* Texto izquierdo con scroll */
+.rr-wrap .message {
   padding: 20px 40px;
+  height: 390px;
   overflow-y: auto;
-  height: 390px; 
+  box-sizing: border-box;
 }
 
-/** The line in between left and right **/
-.middle {
-  background-color: #000;
-  width: 1px;
+/* Línea divisoria */
+.rr-wrap .middle {
+  background-color: rgba(0,0,0,.6);
+  width: 2px;
   height: 90%;
   margin-top: 25px;
 }
 
-.postage-stamp {
+/* Estampilla */
+.rr-wrap .postage-stamp {
   border: 2px dashed #616161;
   height: 100px;
   width: 80px;
@@ -80,32 +89,37 @@ p {
   text-align: center;
   font-family: sans-serif;
   padding-top: 10px;
-
+  box-sizing: border-box;
 }
 
-.postage-stamp p {
-  font-family: Helvetica;
+.rr-wrap .postage-stamp p {
+  font-family: Helvetica, Arial, sans-serif;
   line-height: 20px;
   text-transform: uppercase;
   font-size: 14px;
+  margin: 0;
+  color: #555;
 }
 
-.address {
+/* Dirección derecha */
+.rr-wrap .address {
   width: 80%;
   position: relative;
   left: 35px;
   top: 50px;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
 }
 
-.line {
+.rr-wrap .line {
   width: 100%;
   height: 55px;
   border-bottom: 1px solid #616161;
+  box-sizing: border-box;
 }
 
-.line p {
+.rr-wrap .line p {
   padding-left: 20px;
+  margin: 0;
 }
-
