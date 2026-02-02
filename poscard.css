@@ -1,35 +1,45 @@
-/* NO uses body en un foro, rompe el tema */
+/* NO uses body en foro (rompe el tema) */
 /* body { background-color: #fff; } */
 
 p {
   font-family: 'Shadows Into Light', cursive;
   font-size: 20px;
   line-height: 36px;
-  color: #999999; /* antes #99999 (inválido) */
+  color: #111111; /* negro (antes #99999 era inválido) */
   margin: 0 0 10px 0;
 }
 
-/** position the card in the centre of the post (NO absolute) **/
-.card {
-  position: relative;  /* antes absolute */
-  margin: 20px auto;   /* centra dentro del post */
+/* IMPORTANTE:
+   .card la tienen outer e inner, así que NO la uses para centrar a todos.
+   Centramos SOLO al que tenga .outer también.
+*/
+.outer.card {
+  position: relative;
+  margin: 20px auto;
   top: auto;
   bottom: auto;
   left: auto;
   right: auto;
 }
 
-/* Si tu foro es angosto, evita desbordes */
+/* Resetea la inner (porque también es .card) */
+.inner.card {
+  position: relative;
+  margin: 0;
+  top: auto;
+  bottom: auto;
+  left: auto;
+  right: auto;
+}
+
+/* Postal exterior (borde airmail) */
 .outer {
   height: 500px;
   width: 800px;
   max-width: 100%;
-  background-color: red;
   box-shadow: 2px 2px 10px #999;
-  box-sizing: border-box;
-  padding: 14px; /* para que se vea el borde airmail */
 
-  /** Stripey background **/
+  /* Borde rayado */
   background: repeating-linear-gradient(
     45deg,
     #AD1111,
@@ -41,17 +51,18 @@ p {
     #F8F6E7 30px,
     #F8F6E7 40px
   );
+
+  padding: 14px;           /* borde visible parejo arriba/abajo */
+  box-sizing: border-box;
 }
 
-/** Main bit of the card **/
+/* Interior */
 .inner {
-  height: 100%;     /* antes 93% */
-  width: 100%;      /* antes 96% */
+  height: 100%;
+  width: 100%;
   display: flex;
   box-sizing: border-box;
 
-  /** Background gradient **/
-  background: #F8F6E7;
   background: radial-gradient(#F8F6E7, #F8F6E7, #E2D4B4);
 }
 
@@ -68,7 +79,7 @@ p {
   box-sizing: border-box;
 }
 
-/** The line in between left and right **/
+/* Línea divisoria */
 .middle {
   background-color: #000;
   width: 1px;
@@ -94,6 +105,7 @@ p {
   line-height: 20px;
   text-transform: uppercase;
   font-size: 14px;
+  color: #111;   /* que no se vea gris */
   margin: 0;
 }
 
@@ -117,4 +129,5 @@ p {
 .line p {
   padding-left: 20px;
   margin: 0;
+  color: #111; /* negro */
 }
